@@ -15,7 +15,7 @@ title: const Text('Pertemuan 1'),
 ),
 body: const Center(
 child: Text(
-'Hello World',
+'Hello, World!',
 style: TextStyle(fontSize: 24),
 ),
 ),
