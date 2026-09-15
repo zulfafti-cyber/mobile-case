@@ -1,3 +1,31 @@
+import 'package:flutter/material.dart';
+
+class UserData {
+  final String name;
+  final String bio;
+  final IconData icon;
+
+  const UserData({required this.name, required this.bio, required this.icon});
+}
+
+const List<UserData> users = [
+  UserData(
+    name: 'Zulfa Fitri',
+    bio: 'Membangun solusi digital yang sederhana dan bermanfaat.',
+    icon: Icons.person,
+  ),
+  UserData(
+    name: 'Park Keonho',
+    bio: 'Suka berbagi pengetahuan tentang desain dan teknologi.',
+    icon: Icons.person,
+  ),
+  UserData(
+    name: 'So Junghwan',
+    bio: 'Mengembangkan aplikasi yang mudah digunakan dan terpercaya.',
+    icon: Icons.person,
+  ),
+];
+
 class UserModel {
   final String id;
   final String name;
@@ -32,18 +60,4 @@ class UserModel {
       'isActive': isActive,
     };
   }
-}
-
-void main() {
-  Map jsonResponse = {
-    'name': 'Zulfa Fitri',
-    'age': 20,
-  };
-
-  UserModel user = UserModel.fromJson(jsonResponse);
-
-  print('Nama: ${user.name}');
-  print('ID: ${user.id}');
-  print('Status: ${user.isActive}');
-  print('To JSON: ${user.toJson()}');
 }

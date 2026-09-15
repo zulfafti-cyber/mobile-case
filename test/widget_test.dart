@@ -5,26 +5,32 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:tugas_pertama/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('user can open a profile and pricing page', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('Beranda'), findsOneWidget);
+    expect(find.text('Zulfa Fitri'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    await tester.tap(find.text('Zulfa Fitri'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Detail Profil'), findsOneWidget);
+    expect(find.text('Follow'), findsOneWidget);
+
+    await tester.tap(find.text('Follow'));
     await tester.pump();
+    expect(find.text('Following'), findsOneWidget);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    await tester.tap(find.text('Lihat Paket Harga'));
+    await tester.pumpAndSettle();
+    expect(find.text('Layanan IT'), findsOneWidget);
+    expect(find.text('Paket Profesional'), findsOneWidget);
   });
 }
